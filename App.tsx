@@ -3,6 +3,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import Welcome from './src/screens/Welcome';
 import { useFonts } from 'expo-font';
 import { StyleSheet, View } from 'react-native';
+import RootStack from './src/navigators/RootStack';
 
 export default function App() {
     const [fontsLoaded] = useFonts({
@@ -21,7 +22,7 @@ export default function App() {
     }
     return (
         <View onLayout={onLayoutRootView} style={styles.container}>
-            <Welcome />
+            <RootStack />
         </View>
     );
 }
