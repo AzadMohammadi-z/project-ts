@@ -7,7 +7,11 @@ import Home from '../screens/Home';
 // React Navigation
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
 import { colors } from '../components/color';
+import Greeting from '../components/Header/Greeting';
+import Profile from '../components/Header/Profile';
+import Avi from '../../assets/avi/persion.png';
 
 export type RootStackParamList = {
     Welcome: undefined;
@@ -22,7 +26,7 @@ const RootStack: FunctionComponent = () => {
             <Stack.Navigator
                 screenOptions={{
                     headerStyle: {
-                        backgroundColor: colors.graylight,
+                        backgroundColor: colors.primary,
                         borderBottomWidth: 0,
                         shadowColor: 'transparent',
                         shadowOpacity: 0,
@@ -30,6 +34,13 @@ const RootStack: FunctionComponent = () => {
                         height: 120,
                     },
                     headerTintColor: colors.secondary,
+                    headerLeftContainerStyle: {
+                        paddingLeft: 25,
+                    },
+                    headerRightContainerStyle: {
+                        paddingRight: 20,
+                    },
+                    headerLeft: () => <Profile img={Avi} />,
                 }}
                 initialRouteName="Home"
             >
@@ -38,7 +49,20 @@ const RootStack: FunctionComponent = () => {
                     component={Welcome}
                     options={{ headerShown: false }}
                 />
-                <Stack.Screen name="Home" component={Home} />
+                <Stack.Screen
+                    name="Home"
+                    component={Home}
+                    options={{
+                        headerTitle: '',
+                        headerRight: (props) => (
+                            <Greeting
+                                mainText="صفحه اصلی"
+                                subText="خوش اومدی"
+                                {...props}
+                            />
+                        ),
+                    }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );
