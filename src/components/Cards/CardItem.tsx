@@ -50,7 +50,7 @@ const CardItem: FunctionComponent<CardProps> = (props) => {
 
 const styles = StyleSheet.create({
     cardBackgroung: {
-        height: '28%',
+        height: '75%',
         width: ScreenWidth * 0.67,
         resizeMode: 'cover',
         backgroundColor: colors.accent,
