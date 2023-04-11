@@ -3,7 +3,7 @@ export interface TransactionProps {
     title: string;
     subtitle: string;
     amount: string;
-    data: string;
+    date: string;
     art: {
         icon: string;
         background: string;
