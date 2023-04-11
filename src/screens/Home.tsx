@@ -4,6 +4,7 @@ import { colors } from '../components/color';
 import { StatusBar } from 'expo-status-bar';
 import CardSection from '../components/Cards/CardSection';
 import logo from '../../assets/logo/logo.png';
+import TransactionSection from '../components/Transactions/TransactionSection';
 
 const Home: FunctionComponent = () => {
     const cardsData = [
@@ -29,10 +30,47 @@ const Home: FunctionComponent = () => {
             logo: logo,
         },
     ];
+
+    const transactionData = [
+        {
+            id: 1,
+            amount: '-$86.00',
+            date: 'فروردین 14 ',
+            title: 'تاکسی',
+            subtitle: 'خودرو پراید',
+            art: {
+                background: colors.primary,
+                icon: 'car',
+            },
+        },
+        {
+            id: 2,
+            amount: '-$86.00',
+            date: 'فروردین 14 ',
+            title: 'تاکسی',
+            subtitle: 'خودرو پراید',
+            art: {
+                background: colors.primary,
+                icon: 'car',
+            },
+        },
+        {
+            id: 3,
+            amount: '-$86.00',
+            date: 'فروردین 14 ',
+            title: 'تاکسی',
+            subtitle: 'خودرو پراید',
+            art: {
+                background: colors.primary,
+                icon: 'car',
+            },
+        },
+    ];
     return (
         <View style={styles.homeContainer}>
             <StatusBar style="dark" />
             <CardSection data={cardsData} />
+            <TransactionSection data={transactionData} />
         </View>
     );
 };
