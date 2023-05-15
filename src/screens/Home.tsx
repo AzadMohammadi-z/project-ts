@@ -4,7 +4,9 @@ import { colors } from '../components/color';
 import { StatusBar } from 'expo-status-bar';
 import CardSection from '../components/Cards/CardSection';
 import logo from '../../assets/logo/logo.png';
+import Avi from '../../assets/avi/persion.png';
 import TransactionSection from '../components/Transactions/TransactionSection';
+import SendMoneySection from '../components/SendMoney/SendMoneySection';
 
 const Home: FunctionComponent = () => {
     const cardsData = [
@@ -66,11 +68,36 @@ const Home: FunctionComponent = () => {
             },
         },
     ];
+
+    const sendMoneyData = [
+        {
+            id: 1,
+            amount: '2450.50',
+            name: 'علی احمدی',
+            background: colors.tertiary,
+            img: Avi,
+        },
+        {
+            id: 2,
+            amount: '4450.50',
+            name: 'احمد محمدی',
+            background: colors.primary,
+            img: Avi,
+        },
+        {
+            id: 3,
+            amount: '6250.50',
+            name: 'سارا محمدی',
+            background: colors.accent,
+            img: Avi,
+        },
+    ];
     return (
         <View style={styles.homeContainer}>
             <StatusBar style="dark" />
             <CardSection data={cardsData} />
             <TransactionSection data={transactionData} />
+            <SendMoneySection data={sendMoneyData} />
         </View>
     );
 };
