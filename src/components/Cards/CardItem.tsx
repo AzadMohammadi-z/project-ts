@@ -14,14 +14,26 @@ import RegularText from '../Texts/RegularText';
 import SmallText from '../Texts/SmallText';
 import card_bg from '../../../assets/bags/bg2.jpg';
 
+//navigation
+import { useNavigation } from '@react-navigation/native';
+import { Props as HomeProps } from '../../screens/Home';
+
 const CardItem: FunctionComponent<CardProps> = (props) => {
-    const handlePress = () => {};
+    const navigation = useNavigation<HomeProps['navigation']>();
+    const handlePress = () => {
+        navigation.navigate('Balance', { ...props });
+    };
     return (
         <ImageBackground source={card_bg} style={styles.cardBackgroung}>
-            <TouchableHighlight style={styles.cardTouchable}>
+            <TouchableHighlight
+                style={styles.cardTouchable}
+                onPress={handlePress}
+            >
                 <View style={styles.touchableView}>
                     <View style={styles.cardRow}>
-                        <RegularText textStyles={{ color: colors.white }}>
+                        <RegularText
+                            textStyles={{ color: colors.white, marginTop: -65 }}
+                        >
                             *****{props.accountNo.slice(6.1)}
                         </RegularText>
                     </View>
@@ -31,12 +43,12 @@ const CardItem: FunctionComponent<CardProps> = (props) => {
                                 textStyles={{
                                     marginBottom: 5,
                                     color: colors.graylight,
-                                    fontSize: 18,
+                                    fontSize: 12,
                                 }}
                             >
                                 قیمت کل :
                             </SmallText>
-                            <RegularText textStyles={{ fontSize: 19 }}>
+                            <RegularText textStyles={{ fontSize: 12 }}>
                                 ${props.balance}
                             </RegularText>
                         </View>
@@ -73,6 +85,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         width: '100%',
+        marginTop: 34,
     },
     logo: {
         flex: 1,

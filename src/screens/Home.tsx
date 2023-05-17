@@ -8,27 +8,32 @@ import Avi from '../../assets/avi/persion.png';
 import TransactionSection from '../components/Transactions/TransactionSection';
 import SendMoneySection from '../components/SendMoney/SendMoneySection';
 
-const Home: FunctionComponent = () => {
+//type
+import { RootStackParamList } from '../navigators/RootStack';
+import { StackScreenProps } from '@react-navigation/stack';
+export type Props = StackScreenProps<RootStackParamList, 'Home'>;
+
+const Home: FunctionComponent<Props> = ({ navigation }) => {
     const cardsData = [
         {
             id: 1,
             accountNo: '38457577444',
             balance: 20000.15,
-            alias: 'Work Debit',
+            alias: 'خودرو ها',
             logo: logo,
         },
         {
             id: 2,
             accountNo: '38457577444',
             balance: 20000.15,
-            alias: 'Work Debit',
+            alias: 'خودرو ها',
             logo: logo,
         },
         {
             id: 3,
             accountNo: '38457577444',
             balance: 20000.15,
-            alians: 'Work Debit',
+            alians: 'خودرو ها',
             logo: logo,
         },
     ];
