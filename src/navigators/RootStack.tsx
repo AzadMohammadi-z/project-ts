@@ -8,19 +8,28 @@ import Home from '../screens/Home';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+// balance back icon
+import { Ionicons } from '@expo/vector-icons';
+
 import { colors } from '../components/color';
 import Greeting from '../components/Header/Greeting';
 import Profile from '../components/Header/Profile';
 import Avi from '../../assets/avi/persion.png';
+import { CardProps } from '../components/Cards/types';
+import Balance from '../screens/Balance';
 
 export type RootStackParamList = {
     Welcome: undefined;
     Home: undefined;
+    Balance: CardProps;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-const RootStack: FunctionComponent = () => {
+import { StackScreenProps } from '@react-navigation/stack';
+type Props = StackScreenProps<RootStackParamList, 'Welcome'>;
+
+const RootStack: FunctionComponent<Props> = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator
@@ -42,7 +51,7 @@ const RootStack: FunctionComponent = () => {
                     },
                     headerLeft: () => <Profile img={Avi} />,
                 }}
-                initialRouteName="Home"
+                initialRouteName="Welcome"
             >
                 <Stack.Screen
                     name="Welcome"
@@ -62,6 +71,23 @@ const RootStack: FunctionComponent = () => {
                             />
                         ),
                     }}
+                />
+                <Stack.Screen
+                    name="Balance"
+                    component={Balance}
+                    options={({ navigation, route }) => ({
+                        headerTitle: route?.params?.alias,
+                        headerTitleAlign: 'center',
+                        headerRight: (props) => (
+                            <Ionicons
+                                name="chevron-forward"
+                                {...props}
+                                size={25}
+                                color={colors.secondary}
+                                onPress={() => navigation.goBack()}
+                            />
+                        ),
+                    })}
                 />
             </Stack.Navigator>
         </NavigationContainer>
